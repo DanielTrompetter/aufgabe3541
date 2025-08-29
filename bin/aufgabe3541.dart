@@ -113,9 +113,6 @@ void jobDone(String input)
     print("Aufgabe $number nicht vorhanden!");
     return;
   }
-  
-
-
   doneJobs[number-1] = true;
 }
 
