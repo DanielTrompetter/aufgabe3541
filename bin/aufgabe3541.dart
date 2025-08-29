@@ -102,10 +102,20 @@ void jobDone(String input)
     return;
   }
   int? number = int.tryParse(doneString);
-  if(number == null || number-1<0 || number-1 > doneJobs.length)
+
+  if(number == null)
   {
+    print("Ungültige Eingabe!");
     return;
   }
+  if(number-1<0 || number-1 > doneJobs.length) 
+  {
+    print("Aufgabe $number nicht vorhanden!");
+    return;
+  }
+  
+
+
   doneJobs[number-1] = true;
 }
 
