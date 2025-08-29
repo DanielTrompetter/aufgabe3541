@@ -162,10 +162,16 @@ String? getParams(String input, String commandToCheck)
   {
     return null;
   }
-  // insert remaining chars into result
+  // insert remaining chars into result but skip leading spaces
+  bool paramsFound = false;
   for(int i = startcounter;i<input.length;i++)
   {
-    result += input[i];
+    if(!paramsFound && input[i] != ' ')
+    {
+      paramsFound = true;
+    }
+
+    if(paramsFound) result+= input[i];
   }
   return result;
 }
