@@ -48,7 +48,7 @@ void ShowMenu()
     String? input = stdin.readLineSync();
     if(input != null)
     {
-      Command? cmd =  checkInput(input);
+      Command? cmd =  getCommand(input);
       switch(cmd)
       {
         case Command.help:
@@ -66,31 +66,6 @@ void ShowMenu()
       }
     }
   }
-}
-
-Command? checkInput(String input)
-{
-  Command? result;
-  for(String cmdName in commands.keys)
-  {
-    if(input.length >= cmdName.length)
-    {
-      result = commands[cmdName];
-      for(int i=0;i<cmdName.length;i++)
-      {
-        if(cmdName[i] != input[i])
-        {
-          result = null;
-          break;
-        }
-      }
-      if(result != null)
-      {
-        break;
-      }
-    }
-  }
-  return result;
 }
 
 void addJob(String input)
@@ -132,6 +107,31 @@ void jobDone(String input)
     return;
   }
   doneJobs[number-1] = true;
+}
+
+Command? getCommand(String input)
+{
+  Command? result;
+  for(String cmdName in commands.keys)
+  {
+    if(input.length >= cmdName.length)
+    {
+      result = commands[cmdName];
+      for(int i=0;i<cmdName.length;i++)
+      {
+        if(cmdName[i] != input[i])
+        {
+          result = null;
+          break;
+        }
+      }
+      if(result != null)
+      {
+        break;
+      }
+    }
+  }
+  return result;
 }
 
 String? getParams(String input, String commandToCheck)
