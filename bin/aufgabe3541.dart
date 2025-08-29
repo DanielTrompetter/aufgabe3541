@@ -27,11 +27,11 @@ void main()
 {
   while(true)
   {
-    ShowMenu();
+    showMenu();
   }
 }
 
-void ShowMenu()
+void showMenu()
 {
   print("Wähle Aktion aus:");
   print("=================");
